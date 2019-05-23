@@ -11,15 +11,18 @@ class Lista(object):
         for i in range(vertices):
             self.__lista.append([])
 
-    def addAresta(self,v,w):
+    def addAresta(self,profissionais):
         
-        self.__lista[v.getIndice()].append([w,self.__services.haversine(v.getCoordenadas(),w.getCoordenadas())])
+        for v in profissionais:               
+            for w in profissionais:
+                if v.getIndice() != w.getIndice(): 
+                    self.__lista[v.getIndice()].append([w.getNome(), self.__services.haversine(v.getCoordenadas(),w.getCoordenadas())])
         
 
-    def mostraLista(self):
+    def mostraLista(self,profissionais):
         j = 0
         for i in self.__lista:
-            print(str(j) + " -> " + str(i))
+            print(str(profissionais[j].getNome()) + " -> " + str(i))
             j = j + 1
 
     def getLista(self):
