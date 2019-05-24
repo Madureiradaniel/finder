@@ -13,7 +13,7 @@ class Services:
         dlon = lon2 - lon1
         dlat = lat2 - lat1
         hav = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-        d = 2 * r * asin( sqrt(hav) )
+        km = 2 * r * asin( sqrt(hav) )
 
-        return d
+        return km
 

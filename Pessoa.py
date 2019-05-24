@@ -1,17 +1,19 @@
 class Pessoa(object):
 
-    def __init__(self,nome,coordenadas,profissao,situacao,indice):
+    def __init__(self,nome,latitude,longitude,profissao,situacao,indice):
         self.__indice = indice
         self.__nome = nome
-        self.__coordenadas = coordenadas
+        self.__latitude = latitude
+        self.__longitude = longitude
         self.__profissao = profissao
         self.__situacao = situacao
     
     def getNome(self):
         return self.__nome
     
-    def getCoordenadas(self):
-        return self.__coordenadas
+    def getCoordenadas(self):                
+        coordenadas = {'latitude' : self.__latitude,'longitude' : self.__longitude}
+        return coordenadas
 
     def getProfissao(self):
         return self.__profissao
