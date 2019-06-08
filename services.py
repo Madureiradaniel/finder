@@ -16,4 +16,14 @@ class Services:
         km = 2 * r * asin( sqrt(hav) )
 
         return km
+    
+    def  subLista(self,listaAdjacencia,usuario,raio):       
+        
+        profissionaisRaio = []
+        profissionaisRaio.append(usuario)
+        
+        for profissional in listaAdjacencia[usuario.getIndice()]:
+            if profissional['distancia'] <= raio:
+                profissionaisRaio.append(profissional['profissional'])
 
+        return profissionaisRaio

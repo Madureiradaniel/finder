@@ -12,7 +12,7 @@ class Pessoa(object):
         return self.__nome
     
     def getCoordenadas(self):                
-        coordenadas = {'latitude' : self.__latitude,'longitude' : self.__longitude}
+        coordenadas = {'latitude' : self.__latitude,'longitude' : self.__longitude} # salva as coordendas
         return coordenadas
 
     def getProfissao(self):
