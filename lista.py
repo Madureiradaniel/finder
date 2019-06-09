@@ -19,10 +19,14 @@ class Lista(object):
                     self.__lista[v.getIndice()].append({ 'profissional' : w ,'distancia' : self.__services.haversine(v.getCoordenadas(),w.getCoordenadas())}) # adiciona o vertice com o peso da aresta
                     
     def mostraLista(self,pessoas):
-        j = 0
+        aux=0
         for i in self.__lista:
-            print(str(pessoas[j].getNome()) + " -> " + str(i))
-            j = j + 1
+            print(end="\n")
+            print(pessoas[aux].getNome() + "--> ", end="")
+            for j in i:
+                print(j['profissional'].getNome() +", " + str(j['distancia']) +" KM --> ", end="")                
+            aux+=1
+        print("\n")  
 
     def getLista(self):
         return self.__lista
