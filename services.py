@@ -17,13 +17,16 @@ class Services:
 
         return km
     
-    def  subLista(self,listaAdjacencia,usuario,raio):       
+    def  subLista(self,listaAdjacencia,usuario,raio,tiposProfissional):       
         
         profissionaisRaio = []
         profissionaisRaio.append(usuario)
         
         for profissional in listaAdjacencia[usuario.getIndice()]:
             if profissional['distancia'] <= raio:
-                profissionaisRaio.append(profissional['profissional'])
-
+                if(profissional['profissional'].getProfissao() in tiposProfissional) and (profissional['profissional'].getsituacao() == True):
+                    profissionaisRaio.append(profissional['profissional'])
+                       
         return profissionaisRaio
+
+

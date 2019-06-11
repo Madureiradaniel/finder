@@ -13,18 +13,19 @@ class Lista(object):
 
     def addArestas(self,pessoas):
         # faz uma ligaçao entre todas as pessoas presentes no vertice
-        for v in pessoas:               
+        for v in pessoas:      
             for w in pessoas:
                 if v.getIndice() != w.getIndice(): 
-                    self.__lista[v.getIndice()].append({ 'profissional' : w ,'distancia' : self.__services.haversine(v.getCoordenadas(),w.getCoordenadas())}) # adiciona o vertice com o peso da aresta
+                    self.__lista[pessoas.index(v)].append({ 'profissional' : w ,'distancia' : self.__services.haversine(v.getCoordenadas(),w.getCoordenadas())}) # adiciona o vertice com o peso da aresta
                     
     def mostraLista(self,pessoas):
+        
         aux=0
         for i in self.__lista:
             print(end="\n")
             print(pessoas[aux].getNome() + "--> ", end="")
             for j in i:
-                print(j['profissional'].getNome() +", " + str(j['distancia']) +" KM --> ", end="")                
+                print(j['profissional'].getNome() +", " + str(j['distancia'])+", "+ str(j['profissional'].getProfissao()) +" KM --> ", end="")                
             aux+=1
         print("\n")  
 

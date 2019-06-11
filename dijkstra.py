@@ -2,7 +2,7 @@ from Fila import Fila
 
 class Dijkstra:
     
-    def __init__(self,grafo,s):
+    def __init__(self,grafo,s,profissionaisRaio):
         
         INFINITO = len(grafo)
         self.pai = [-1] * INFINITO
@@ -10,27 +10,32 @@ class Dijkstra:
 
         fila = Fila()
         
-        custo[s['profissional'].getIndice()] = 0
+        custo[profissionaisRaio.index(s['profissional'])] = 0
         print(custo)
-        self.pai[s['profissional'].getIndice()] = s 
+        self.pai[profissionaisRaio.index(s['profissional'])] = s 
         fila.QEUEput(s)
 
         while fila.QEUEempty() !=0:
             v = fila.QEUEget()
-            for p in grafo[v['profissional'].getIndice()]:
+            for p in grafo[profissionaisRaio.index(v['profissional'])]: #v['profissional'].getIndice()
                 w=p
-                if custo[w['profissional'].getIndice()] == INFINITO:
-                    self.pai[w['profissional'].getIndice()] = v
-                    custo[w['profissional'].getIndice()] = custo[v['profissional'].getIndice()]+p['distancia']
+                print(w)
+                if custo[profissionaisRaio.index(w['profissional'])] == INFINITO:
+                    self.pai[profissionaisRaio.index(w['profissional'])] = v
+                    custo[profissionaisRaio.index(w['profissional'])] = custo[profissionaisRaio.index(v['profissional'])]+p['distancia']
                     fila.QEUEput(w)
-                    print(custo) 
-                elif custo[w['profissional'].getIndice()] > (custo[v['profissional'].getIndice()]+p['distancia']):
-                    self.pai[w['profissional'].getIndice()] = v
-                    custo[w['profissional'].getIndice()] = custo[v['profissional'].getIndice()] + p['distancia']                     
-                    fila.PQdec(w,custo[v['profissional'].getIndice()] + p['distancia'])
+                    print(custo)
+                    
+                elif custo[profissionaisRaio.index(w['profissional'])] > custo[profissionaisRaio.index(v['profissional'])]+p['distancia']:
+                    self.pai[profissionaisRaio.index(w['profissional'])] = v
+                    custo[profissionaisRaio.index(w['profissional'])] = custo[profissionaisRaio.index(v['profissional'])] + p['distancia']                     
+                    fila.PQdec(w,custo[profissionaisRaio.index(v['profissional'])] + p['distancia'])
             
         print(custo) 
             
-    def mostraPai(self):
+    def mostraPai(self,profissionaisRaio):
+        aux =0
         for pai in self.pai:
-            print(pai['profissional'].getNome())
+            print( str(profissionaisRaio.index(pai['profissional'])) +  " é pai de " +str(profissionaisRaio.index(profissionaisRaio[aux])))
+            aux += 1
+        print("\n")
