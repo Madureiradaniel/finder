@@ -26,12 +26,13 @@ def main():
   
     sub_lista = Lista(len(profissionaisRaio)) # tratar quando a lista retornar apenas o usuario len(profissionaisraio) > 1
     sub_lista.addArestas(profissionaisRaio)
+    print(sub_lista.getLista())
      
     print("Lista 2")  
     sub_lista.mostraLista(profissionaisRaio)
     
     usuario = {'profissional': usuario, 'distancia' : 0}
-
+    print(usuario)
     dj = Dijkstra(sub_lista.getLista(),usuario,profissionaisRaio)
     dj.mostraPai(profissionaisRaio)
   

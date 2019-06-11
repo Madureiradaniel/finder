@@ -39,12 +39,24 @@ class Services:
         with open("profissionais") as profissionais:
             for row in profissionais:
                 row =row.replace(",", ";")               
-                atributos =list(map(str,row.split(";")))            
-                pessoa = Pessoa(atributos[0],float(atributos[1]),float(atributos[2]),atributos[3],bool(atributos[4].replace("\n", "")),indice)
-                #print(str(pessoa.getIndice()) + pessoa.getNome() +" "+str(pessoa.getProfissao())+ " " +str(pessoa.getCoordenadas())+ " Situacao:" +str(pessoa.getsituacao()))
+                atributos =list(map(str,row.split(";")))                           
+                situacao = True if str(atributos[4]).replace("\n","") == 'True' else False
+                pessoa = Pessoa(atributos[0],float(atributos[1]),float(atributos[2]),atributos[3],situacao,indice)
+                print(str(pessoa.getIndice()) +" "+ pessoa.getNome() +" "+str(pessoa.getProfissao())+ " Situacao: " +str(pessoa.getsituacao()))
                 pessoas.append(pessoa)
                 indice += 1        
         return pessoas
+    
+    def getProfissionais(self,profissionaisEscolhidos,profissionaisDisponiveis):
+        escolhidos = []
+        
+        usuario = Pessoa('Daniel',-15.0001,-47.9292 ,'usuario',True,0)
+        escolhidos.append(usuario)
+        for profissional in profissionaisDisponiveis:          
+            if profissional.getIndice() in profissionaisEscolhidos:
+                escolhidos.append(profissional)
+       
+        return escolhidos
 
     def MostraProfissionais(self,profissionais): 
         for i in profissionais: 
