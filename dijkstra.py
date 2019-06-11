@@ -30,11 +30,28 @@ class Dijkstra:
                     self.__custo[profissionaisRaio.index(w['profissional'])] = self.__custo[profissionaisRaio.index(v['profissional'])] + p['distancia']                     
                     fila.PQdec(w,self.__custo[profissionaisRaio.index(v['profissional'])] + p['distancia'])
             
-        print(self.__custo)
-         
-    def melhorCaminho(self):
-     
        
+        print("Vetor de custo: " + str(self.__custo))
+        
+
+    def getCusto(self):
+        return  list(map(float,str(self.__custo).split(","))) 
+         
+    def melhorCaminho(self,custos):
+     
+        menorCaminho = []        
+
+        while len(custos) != 0:
+            print("custo - >"+  str(min(custos)))
+            print(self.__custo.index(min(custos)))
+            print("Vetor de custo: " + str(self.__custo))
+
+            # print(self.__profissionaisRaio[])
+
+            #menorCaminho.append([self.__profissionaisRaio[self.__custo.index(min(custos))] ,min(custos)])
+            custos.remove(min(custos))
+            #print(menorCaminho)
+
 
         return 0
 
