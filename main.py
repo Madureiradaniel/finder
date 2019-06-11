@@ -43,9 +43,11 @@ def main():
             #verifica o menor caminho utilizando o algoritmo dijkstra
             #e retorna o vetor pai e o vetor de custos
             usuario = {'profissional': selecionados[0], 'distancia' : 0} # selecionados[0] -> sempre é o usuario
-            dijkstra = Dijkstra(sub_lista.getLista(),usuario,selecionados) 
-            custo = dijkstra.getCusto()
+            dijkstra = Dijkstra()             
+            custo =  dijkstra.getCustos(sub_lista.getLista(),usuario,selecionados)
+            
             dijkstra.melhorCaminho(custo)
+            
             print("Para sair digite '0' | para continuar digite '1' ")
             option = int(input(""))
             op = 0 if option == 0  else -1    

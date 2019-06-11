@@ -2,7 +2,7 @@ from Fila import Fila
 
 class Dijkstra:
     
-    def __init__(self,grafo,s,profissionaisRaio):
+    def getCustos(self,grafo,s,profissionaisRaio):
         
         INFINITO = len(grafo)
         self.__pai = [-1] * INFINITO
@@ -32,29 +32,24 @@ class Dijkstra:
             
        
         print("Vetor de custo: " + str(self.__custo))
-        
-
-    def getCusto(self):
-        return  list(map(float,str(self.__custo).split(","))) 
+        return list(map(float,self.__custo))
          
-    def melhorCaminho(self,custos):
+    def melhorCaminho(self,custo):
      
-        menorCaminho = []        
-
-        while len(custos) != 0:
-            print("custo - >"+  str(min(custos)))
-            print(self.__custo.index(min(custos)))
+        menorCaminho = []
+        
+        while len(custo) != 0:
+            print("custo - >"+  str(min(custo)))
+            print(self.__custo.index(min(custo)))
             print("Vetor de custo: " + str(self.__custo))
 
             # print(self.__profissionaisRaio[])
 
-            #menorCaminho.append([self.__profissionaisRaio[self.__custo.index(min(custos))] ,min(custos)])
-            custos.remove(min(custos))
+            #menorCaminho.append([self.__profissionaisRaio[custo.index(min(custos))] ,min(custos)])
+            custo.remove(min(custo))
             #print(menorCaminho)
 
-
         return 0
-
 
     def mostraPai(self):
         aux =0
