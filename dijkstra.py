@@ -11,7 +11,6 @@ class Dijkstra:
 
         fila = Fila()
         self.__custo[profissionaisRaio.index(s['profissional'])] = 0
-        print(self.__custo)
         self.__pai[profissionaisRaio.index(s['profissional'])] = s 
         fila.QEUEput(s)
 
@@ -32,24 +31,26 @@ class Dijkstra:
             
        
         print("Vetor de custo: " + str(self.__custo))
+        print("\n")
         return list(map(float,self.__custo))
          
     def melhorCaminho(self,custo):
      
         menorCaminho = []
         
-        while len(custo) != 0:
-            print("custo - >"+  str(min(custo)))
-            print(self.__custo.index(min(custo)))
-            print("Vetor de custo: " + str(self.__custo))
-
-            # print(self.__profissionaisRaio[])
-
-            #menorCaminho.append([self.__profissionaisRaio[custo.index(min(custos))] ,min(custos)])
+        print("O melhor caminha para voce bsucar esses profissionais é: \n")
+        while len(custo) != 0:       
+            menorCaminho.append([self.__profissionaisRaio[self.__custo.index(min(custo))], min(custo)])
             custo.remove(min(custo))
-            #print(menorCaminho)
-
-        return 0
+        aux =0
+        for i in menorCaminho:
+            custo = i[1] - aux
+            
+            print( "--[" + str(custo) + "]-->" + i[0].getNome() , end=" "  )
+            aux = i[1]
+        
+        print("\n")
+        
 
     def mostraPai(self):
         aux =0

@@ -44,8 +44,7 @@ def main():
             #e retorna o vetor pai e o vetor de custos
             usuario = {'profissional': selecionados[0], 'distancia' : 0} # selecionados[0] -> sempre é o usuario
             dijkstra = Dijkstra()             
-            custo =  dijkstra.getCustos(sub_lista.getLista(),usuario,selecionados)
-            
+            custo =  dijkstra.getCustos(sub_lista.getLista(),usuario,selecionados)            
             dijkstra.melhorCaminho(custo)
             
             print("Para sair digite '0' | para continuar digite '1' ")
