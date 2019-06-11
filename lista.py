@@ -25,7 +25,7 @@ class Lista(object):
             print(end="\n")
             print(pessoas[aux].getNome() + "--> ", end="")
             for j in i:
-                print(j['profissional'].getNome() +", " + str(j['distancia'])+", "+ str(j['profissional'].getProfissao()) +" KM --> ", end="")                
+                print(j['profissional'].getNome() +", " + str(j['profissional'].getProfissao())+","+ str(j['distancia'])+" KM-> ", end="")                
             aux+=1
         print("\n")  
 

@@ -19,12 +19,11 @@ class Dijkstra:
             v = fila.QEUEget()
             for p in grafo[profissionaisRaio.index(v['profissional'])]: #v['profissional'].getIndice()
                 w=p
-                print(w)
                 if custo[profissionaisRaio.index(w['profissional'])] == INFINITO:
                     self.pai[profissionaisRaio.index(w['profissional'])] = v
                     custo[profissionaisRaio.index(w['profissional'])] = custo[profissionaisRaio.index(v['profissional'])]+p['distancia']
                     fila.QEUEput(w)
-                    print(custo)
+                    # print(custo)
                     
                 elif custo[profissionaisRaio.index(w['profissional'])] > custo[profissionaisRaio.index(v['profissional'])]+p['distancia']:
                     self.pai[profissionaisRaio.index(w['profissional'])] = v

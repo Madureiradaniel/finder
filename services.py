@@ -1,4 +1,5 @@
 from math import radians, cos, sin, asin, sqrt
+from Pessoa import Pessoa
 
 class Services:
     #calcular km
@@ -24,9 +25,29 @@ class Services:
         
         for profissional in listaAdjacencia[usuario.getIndice()]:
             if profissional['distancia'] <= raio:
-                if(profissional['profissional'].getProfissao() in tiposProfissional) and (profissional['profissional'].getsituacao() == True):
+               if profissional['profissional'].getProfissao() in tiposProfissional and profissional['profissional'].getsituacao() == True:
                     profissionaisRaio.append(profissional['profissional'])
                        
         return profissionaisRaio
 
+    def lerProfissionais(self):
+        pessoas = []
+        usuario = Pessoa('Daniel',-15.0001,-47.9292 ,'usuario',True,0)       
+        indice = 1 
+        pessoas.append(usuario)
 
+        with open("profissionais") as profissionais:
+            for row in profissionais:
+                row =row.replace(",", ";")               
+                atributos =list(map(str,row.split(";")))            
+                pessoa = Pessoa(atributos[0],float(atributos[1]),float(atributos[2]),atributos[3],bool(atributos[4].replace("\n", "")),indice)
+                #print(str(pessoa.getIndice()) + pessoa.getNome() +" "+str(pessoa.getProfissao())+ " " +str(pessoa.getCoordenadas())+ " Situacao:" +str(pessoa.getsituacao()))
+                pessoas.append(pessoa)
+                indice += 1        
+        return pessoas
+
+    def MostraProfissionais(self,profissionais): 
+        for i in profissionais: 
+            if i.getIndice() != 0:
+                a = "Disponivel" if i.getsituacao() == True else "Indisponivel"       
+                print(str(i.getIndice()) + " "+ i.getNome() + " " +i.getProfissao() + " " + str(a))
